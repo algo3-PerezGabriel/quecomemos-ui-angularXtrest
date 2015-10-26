@@ -14,8 +14,4 @@ class FiltroPorIngrediente implements Filtro {
 		if (ingrediente == ""){return recetasSinFiltrar}
 			else{recetasSinFiltrar.filter[contieneIngrediente(ingrediente)].toList}
 	}
-	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}	
 }

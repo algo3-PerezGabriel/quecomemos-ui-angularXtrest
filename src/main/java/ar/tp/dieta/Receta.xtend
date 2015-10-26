@@ -12,7 +12,7 @@ class Receta extends ElementoDeReceta implements Cloneable{
 
 
 	String id
-	String nombreDeLaReceta
+	//String nombreDeLaReceta
 	public int calorias
 	ArrayList<ElementoDeReceta> elementosDeReceta = new ArrayList<ElementoDeReceta> //Integra ingredientes, condimentos y subrecetas.	
 	String procesoDePreparacion
@@ -64,11 +64,11 @@ class Receta extends ElementoDeReceta implements Cloneable{
 	}
 
 	def cambiarNombre(String nombre) {
-		setNombreDeLaReceta(nombre)
+		setNombre(nombre)
 	}
 
 	def devolverNombre() {
-		this.getNombreDeLaReceta()
+		this.getNombre()
 	}
 	
 	override soyInadecuadoParaCondicion(Condicion unaCondicion) {
@@ -79,9 +79,6 @@ class Receta extends ElementoDeReceta implements Cloneable{
 		calorias > 500
 	}
 	
-	def esInadecuadaParaGrupo(Grupo grupo) {
-		grupo.miembros.exists[miembro | this.esInadecuadaParaUsuario(miembro)]
-	}
 	
 	def boolean contieneIngrediente(String nombreIngrediente) {
 		getIngredientes.exists[getNombre().equals(nombreIngrediente)]
@@ -100,7 +97,8 @@ class Receta extends ElementoDeReceta implements Cloneable{
 	}
 	
 	def boolean tuNombreEsEste(String nombre){
-		nombreDeLaReceta.equals(nombre)
+		
+		this.nombre.equals(nombre)
 	}
 	
 	def getIngredientes(){

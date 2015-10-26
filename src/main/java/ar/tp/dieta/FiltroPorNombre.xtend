@@ -14,9 +14,4 @@ class FiltroPorNombre implements Filtro {
 		if (nombre == ""){return recetasSinFiltrar}
 			else{recetasSinFiltrar.filter[devolverNombre.equals(nombre)].toList}
 	}
-	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
 }

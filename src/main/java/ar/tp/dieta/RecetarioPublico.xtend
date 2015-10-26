@@ -22,7 +22,7 @@ class RecetarioPublico implements Cloneable{
 
 	def void mirarRecetario() {
 		//imprime los nombres de las recetas
-		recetas.forEach[receta|println(receta.getNombreDeLaReceta)]
+		recetas.forEach[receta|println(receta.getNombre)]
 	}
 
 	def elegirReceta(String nombre) {
@@ -35,7 +35,7 @@ class RecetarioPublico implements Cloneable{
 	}
 	
 	def busquedaReceta(String nombreReceta){
-		recetas.findFirst[receta|receta.getNombreDeLaReceta.equals(nombreReceta)]
+		recetas.findFirst[receta|receta.getNombre.equals(nombreReceta)]
 	}
 	
 	def recetarioContiene(Receta unaReceta){

@@ -18,7 +18,4 @@ class FiltroExcesoDeCalorias implements Filtro {
 		}
 	}
 	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-	}
-	
 }

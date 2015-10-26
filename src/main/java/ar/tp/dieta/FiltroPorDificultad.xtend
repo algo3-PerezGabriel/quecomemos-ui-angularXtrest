@@ -15,9 +15,4 @@ class FiltroPorDificultad implements Filtro {
 		if (dificultad == ""){return recetasSinFiltrar}
 			else{recetasSinFiltrar.filter[getDificultadDePreparacion().equals(dificultad)].toList}
 	}
-	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
 }

@@ -17,17 +17,4 @@ class PosteriorBusquedaDiezPrimeros implements Filtro{
 		}
 		recetasADevolver
 	}
-	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-		//solo toma los 10 primeros resultados *** modificado a los 5 primeros para test***
-		var List<Receta> recetasADevolver = new ArrayList<Receta>
-		var Iterator<Receta> iterRecetas = recetasSinFiltrar.iterator()
-		var int contador = 0
-		while(contador < 5){
-			recetasADevolver.add(iterRecetas.next)
-			contador++
-		}
-		recetasADevolver
-	}
-	
 }

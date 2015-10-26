@@ -11,8 +11,4 @@ class FiltroPorIngredienteCaro implements Filtro {
 		recetas.forEach[receta | if(!receta.contieneAlguno(elementosCaros)){ recetasFinal.add(receta)}]
 		recetasFinal
 	}
-	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-	}
-	
 }

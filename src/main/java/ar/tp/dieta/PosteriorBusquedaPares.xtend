@@ -16,16 +16,4 @@ class PosteriorBusquedaPares implements Filtro{
 			contador++
 		}
 		recetasADevolver	}
-	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-		//solo toma las recetas en posiciones pares en el array.
-		var List<Receta> recetasADevolver = new ArrayList<Receta>
-		var Iterator<Receta> iterRecetas = recetasSinFiltrar.iterator()
-		var int contador = 1
-		while(contador <= 10){
-			if((contador%2).equals(0)){ recetasADevolver.add(iterRecetas.next) }
-			contador++
-		}
-		recetasADevolver	}
-	
 }

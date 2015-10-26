@@ -19,7 +19,6 @@ class Usuario extends Miembro {
 	List<Condicion> condicionesPreexistentes = new ArrayList<Condicion>
 	List<String> comidasQueNoMeGustan = new ArrayList<String>
 	List<Receta> misRecetas = new ArrayList<Receta>
-	List<Grupo> misGrupos = new ArrayList<Grupo>
 	List<Receta> recetasFavoritas = new ArrayList<Receta>
 	List<Receta> ultimasConsultadas = new ArrayList<Receta>
 	String direccionCorreo
@@ -87,11 +86,6 @@ class Usuario extends Miembro {
 //		misRecetas.add(recetario.copiarReceta(recetaNueva, nombreReceta))
 //	}
 
-	public def void agregarRecetaDeGrupo(Grupo unGrupo, String nombreReceta){
-		var Receta recetaNueva = new Receta
-		misRecetas.add(unGrupo.copiarReceta(this, unGrupo, recetaNueva,nombreReceta))
-	}
-		
 	// Crear una receta privada
 	public def void crearReceta(String nombre, int calorias, String dificultad, String preparacion, String temporada, Ingrediente ingrediente1, Ingrediente ingrediente2 ) {
 		var Receta nuevaReceta = new RecetaBuilder(nombre)
@@ -162,10 +156,6 @@ class Usuario extends Miembro {
 		else{recetasFavoritas.add(unaReceta)}
 	}
 	
-	def void agregarRecetaFavorita(Grupo unGrupo, String nombre){
-		recetasFavoritas.add(unGrupo.devolverRecetaDeMiembro(nombre))
-	}
-
 	def void agregarResultadosDeConsultasAFavoritos(){
 		resultadoDeConsultasAFavoritos = true
 	}
@@ -181,7 +171,6 @@ class Usuario extends Miembro {
 	def List<Receta> recetasQuePuedoVer(){
 		val List<Receta> recetasQueVeo = new ArrayList<Receta>
 		recetario.recetas.forEach[receta | recetasQueVeo.add(receta)]
-		misGrupos.forEach[grupo | recetasQueVeo.addAll[grupo.recetasDelGrupoPara(this).iterator]]
 		recetasQueVeo.addAll[misRecetas.iterator]
 		recetasQueVeo
 	}
@@ -204,7 +193,6 @@ class Usuario extends Miembro {
 		condicionesPreexistentes.exists[ condicion | condicion.getClass().equals(unaCondicion.getClass()) ]
 	}
  	
- 	///////////////////////////////////// METODO PARA FILTRAR BUSQUEDAS /////////////////////////////////////
  	
  	def List<Receta> busquedaFiltrada(){
 		var List<Receta> recetasFiltradas = recetasQuePuedoVer()

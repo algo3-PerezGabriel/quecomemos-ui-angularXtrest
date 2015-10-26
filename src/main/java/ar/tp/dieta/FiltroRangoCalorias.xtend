@@ -25,11 +25,4 @@ class FiltroRangoCalorias implements Filtro {
 		}
 	
 	}
-	
-
-	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
 }

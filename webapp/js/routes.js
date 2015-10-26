@@ -1,3 +1,5 @@
+'use strict';
+
 queComemosApp.config(function ($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/");

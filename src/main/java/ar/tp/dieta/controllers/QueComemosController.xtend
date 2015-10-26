@@ -17,7 +17,7 @@ class QueComemosController {
 		XTRest.start(QueComemosController , 9000)
 	}
 
-	@Get("/RecetasAMostrar")
+	@Get("/recetasAMostrar")
 	def Result recetasAMostrar() {
 		val recetas = new RepoRecetas().recetarioPublico.getRecetas
 		response.contentType = ContentType.APPLICATION_JSON

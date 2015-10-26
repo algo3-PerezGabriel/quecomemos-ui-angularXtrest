@@ -37,9 +37,4 @@ class Busqueda {
 //			counter++
 //		}
 	}
-	
-	def List<Receta> aplicarBusquedaGrupo(Grupo unGrupo, List<Receta> recetas) {
-		recetas
-	}
-
 }

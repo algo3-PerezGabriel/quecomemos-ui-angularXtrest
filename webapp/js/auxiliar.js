@@ -1,5 +1,3 @@
-queComemosApp.service('RecetasService',function () {
-	
 	this.recetas = [
 			{ 
 				owner: "elPibito",
@@ -196,5 +194,3 @@ queComemosApp.service('RecetasService',function () {
     	return _.find(this.recetas, function(receta) {
       		return receta.identificador == identifier;
     });
-  };
-});

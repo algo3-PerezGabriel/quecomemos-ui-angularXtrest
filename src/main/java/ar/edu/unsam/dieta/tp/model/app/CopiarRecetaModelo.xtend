@@ -16,11 +16,11 @@ class CopiarRecetaModelo {
 	new(Usuario unUsr, Receta unaReceta){
 		elUsr = unUsr
 		laReceta = unaReceta
-		nombreReceta = ("Mi " + unaReceta.nombreDeLaReceta)
+		nombreReceta = ("Mi " + unaReceta.nombre)
 	}
 	
 	def getNombreOrigen(){
-		laReceta.getNombreDeLaReceta
+		laReceta.getNombre
 	}
 	
 	def void copiarReceta(){

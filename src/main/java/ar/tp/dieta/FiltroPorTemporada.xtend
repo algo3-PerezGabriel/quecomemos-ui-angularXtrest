@@ -15,10 +15,4 @@ class FiltroPorTemporada implements Filtro {
 		if (temporada == ""){return recetasSinFiltrar}
 			else{recetasSinFiltrar.filter[temporadaALaQueCorresponde.equals(temporada)].toList}
 	}
-	
-	
-	override aplicarFiltroGrupo(Grupo unGrupo, List<Receta> recetasSinFiltrar) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
 }

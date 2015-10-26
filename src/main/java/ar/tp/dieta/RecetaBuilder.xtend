@@ -11,7 +11,7 @@ class RecetaBuilder {
 
 	new(String nombreReceta) {
 		receta = new Receta()
-		receta.setNombreDeLaReceta(nombreReceta)
+		receta.setNombre(nombreReceta)
 	}
 
 	public def RecetaBuilder calorias(int calorias) {
