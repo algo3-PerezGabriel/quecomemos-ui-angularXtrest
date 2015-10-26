@@ -1,0 +1,8 @@
+/webapp/node_modules/
+/src/main/generated-sources/
+*.project
+/xtend-gen/
+/target/
+.classpath
+/.settings/
+/bin/
