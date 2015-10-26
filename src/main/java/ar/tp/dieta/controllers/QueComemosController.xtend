@@ -1,5 +1,7 @@
 package ar.tp.dieta.controllers
 
+import ar.tp.dieta.RecetarioPublico
+import ar.tp.dieta.RepoDeUsuarios
 import ar.tp.dieta.RepoRecetas
 import org.uqbar.xtrest.api.Result
 import org.uqbar.xtrest.api.XTRest
@@ -13,13 +15,16 @@ class QueComemosController {
 	
 	extension JSONUtils = new JSONUtils
 	
+	RepoDeUsuarios usuarios
+	RecetarioPublico recetario = usuarios.recetarioPublico
+	
 	def static void main(String[] args) {
 		XTRest.start(QueComemosController , 9000)
 	}
 
 	@Get("/recetasAMostrar")
 	def Result recetasAMostrar() {
-		val recetas = new RepoRecetas().recetarioPublico.getRecetas
+		val recetas = recetario.getRecetas
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(recetas.toJson)
 	}
