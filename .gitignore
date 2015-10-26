@@ -1,4 +1,5 @@
 src/main/webapp/node_modules/
+src/main/webapp/npm-debug.log
 /src/main/generated-sources/
 *.project
 /xtend-gen/
@@ -6,4 +7,3 @@ src/main/webapp/node_modules/
 .classpath
 /.settings/
 /bin/
-npm-debug.log
