@@ -15,9 +15,9 @@ class Receta extends ElementoDeReceta implements Cloneable{
 	//String nombreDeLaReceta
 	public int calorias
 	ArrayList<ElementoDeReceta> elementosDeReceta = new ArrayList<ElementoDeReceta> //Integra ingredientes, condimentos y subrecetas.	
-	String procesoDePreparacion
-	String dificultadDePreparacion
-	String temporadaALaQueCorresponde
+	String preparacion
+	String dificultad
+	String temporada
 	int tiempoPreparacion
 	int anioDeCreacion
 	Usuario owner
@@ -144,9 +144,9 @@ class Receta extends ElementoDeReceta implements Cloneable{
 	 def clonateConNombre(String nombreNuevo){
 		var Receta receta = new RecetaBuilder(nombreNuevo)
 								.calorias(this.calorias)
-								.dificultad(this.dificultadDePreparacion)
+								.dificultad(this.dificultad)
 								.owner(this.owner)
-								.procesoPreparacion(this.procesoDePreparacion)
+								.procesoPreparacion(this.preparacion)
 								.build()
 			receta.elementosDeReceta = this.elementosDeReceta
 			receta

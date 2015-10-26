@@ -123,22 +123,6 @@ class Usuario extends Miembro {
 		subReceta
 	}
 
-	// Modificacion de receta.
-	public def void modificarReceta(String nombreOriginal, String nombreNuevo, int calorias, String proceso,
-		String dificultad, String temporada) {
-	
-		var Receta nuevaReceta = new Receta
-		nuevaReceta = devolverReceta(nombreOriginal) //nuevaReceta ahora apunta a la receta buscada (si es que existe)
-		
-		nuevaReceta =>[
-			setProcesoDePreparacion(proceso)
-			setCalorias(calorias)
-			setDificultadDePreparacion(dificultad)
-			setTemporadaALaQueCorresponde(temporada)
-			cambiarNombre(nombreNuevo)
-		]
-	}
-	
 	def boolean meConvieneReceta(Receta receta) {
 		receta.esInadecuadaParaUsuario(this) 
 	}

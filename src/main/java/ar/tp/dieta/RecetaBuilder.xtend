@@ -25,17 +25,17 @@ class RecetaBuilder {
 	}
 
 	public def RecetaBuilder dificultad(String dificultad) {
-		receta.setDificultadDePreparacion(dificultad)
+		receta.setDificultad(dificultad)
 		return this
 	}
 
 	public def RecetaBuilder procesoPreparacion(String procesoPreparacion) {
-		receta.setProcesoDePreparacion(procesoPreparacion)
+		receta.setPreparacion(procesoPreparacion)
 		return this
 	}
 
 	public def RecetaBuilder temporada(String temporada) {
-		receta.setTemporadaALaQueCorresponde(temporada)
+		receta.setTemporada(temporada)
 		return this
 	}
 

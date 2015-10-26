@@ -13,6 +13,6 @@ class FiltroPorDificultad implements Filtro {
 	
 	override aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetasSinFiltrar) {
 		if (dificultad == ""){return recetasSinFiltrar}
-			else{recetasSinFiltrar.filter[getDificultadDePreparacion().equals(dificultad)].toList}
+			else{recetasSinFiltrar.filter[getDificultad().equals(dificultad)].toList}
 	}
 }

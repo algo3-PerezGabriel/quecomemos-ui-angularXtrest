@@ -13,6 +13,6 @@ class FiltroPorTemporada implements Filtro {
 	
 	override aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetasSinFiltrar) {
 		if (temporada == ""){return recetasSinFiltrar}
-			else{recetasSinFiltrar.filter[temporadaALaQueCorresponde.equals(temporada)].toList}
+			else{recetasSinFiltrar.filter[getTemporada.equals(temporada)].toList}
 	}
 }

@@ -1,4 +1,4 @@
-/webapp/node_modules/
+src/main/webapp/node_modules/
 /src/main/generated-sources/
 *.project
 /xtend-gen/

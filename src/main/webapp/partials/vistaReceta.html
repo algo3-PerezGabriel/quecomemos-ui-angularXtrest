@@ -1,0 +1,102 @@
+<form class=" container form-horizontal">
+    <div class="container table table-bordered">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <span><h4>{{detalleCtrl.receta.nombre}}</h4></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                <span>{{detalleCtrl.receta.calorias}} <b>calorias</b></span>
+            </div>
+            <div class="col-sm-2">
+                <span> <b>Creado por: </b>{{detalleCtrl.receta.owner}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-1">
+            <label><b>Dificultad</b></label>
+        </div>
+        <div class="col-sm-1 col-sm-offset-5">
+            <label><b>Temporada</b></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-1">
+            <span>{{detalleCtrl.receta.dificultad}}</span>
+        </div>
+        <div class="col-sm-2 col-sm-offset-5">
+            <span>{{detalleCtrl.receta.temporada}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-1">
+            <label><b>Ingredientes</b></label>
+        </div>
+        <div class="col-sm-1 col-sm-offset-5">
+            <label><b>Condimentos</b></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <th class="info">Dosis</th>
+                    <th class="info">Ingrediente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ingrediente in detalleCtrl.receta.ingredientes">
+                        <td>{{ ingrediente.dosis}}</td>
+                        <td>{{ ingrediente.nombreIngrediente}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-1 col-sm-offset-3">
+            <ul>
+                <li ng-repeat="condimento in detalleCtrl.receta.condimentos">
+                    {{condimento}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-2">
+            <input type="checkbox" ng-model="detalleCtrl.receta.esFavorita" name="favorita" disabled="false">
+            <label><b>Favorita</b></label>
+        </div>
+        <div class="col-sm-3 col-sm-offset-4">
+            <label><b>Condiciones preexistentes</b></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-1 col-sm-offset-6">
+            <ul>
+                <li ng-repeat="condicion in detalleCtrl.receta.condiciones">
+                    {{condicion}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <label><b>Proceso de preparacion: </b></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="panel panel-body panel-info">
+                {{detalleCtrl.receta.preparacion}}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-1 col-sm-offset-4">
+            <button ui-sref="pantallaBienvenida" type="button" class="btn btn-default btn-lg active">
+                Atras
+            </button>
+        </div>
+    </div>
+</form>
