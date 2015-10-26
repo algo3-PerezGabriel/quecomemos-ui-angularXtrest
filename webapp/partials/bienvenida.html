@@ -1,0 +1,24 @@
+<div>
+  <div class="panel-heading">
+    <h4>Recetas Mostradas</h4>
+  </div>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Calorias</th>
+        <th>Dificultad</th>
+        <th>Temporada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="receta in bienvenidaCtrl.recetas">
+        <td>
+          <a ui-sref="verDetalle({identifier: receta.identificador})">{{receta.nombre}}</a>
+        </td>
+        <td>{{receta.calorias}}</td>
+        <td>{{receta.dificultad}}</td>
+        <td>{{receta.temporada}}</td>
+      </tr>
+    </tbody>
+</div>
