@@ -1,16 +1,17 @@
 
 queComemosApp.service('RecetasService',function ($http) {
-
-	this.nombreUsr = 'Gabriel';
-	this.recetasMostradas = [];
 	
+	var self = this;
+	this.nombreUsr = 'Gabriel';
+	self.recetasEnGrilla = [];
+
 	this.findAll = function(callback) {
         $http.get('/logearUsuario/'+ this.nombreUsr).then(callback);
     };
 
 
 	this.getRecetaById = function (identifier) {
-    	return _.find(this.recetasMostradas, function(receta) {
+    	return _.find(self.recetasEnGrilla, function(receta) {
       		return receta.identificador == identifier;
     	});
     };

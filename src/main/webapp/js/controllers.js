@@ -3,7 +3,7 @@
 queComemosApp.controller('BienvenidaController', function ($stateParams, RecetasService) {
 
 	var self = this;
-	var recetasMostradas = [];
+	this.recetasMostradas = [];
 
 	this.transformarAReceta = function(recetaJson) {
 			Receta.asReceta(recetaJson);
@@ -14,7 +14,8 @@ queComemosApp.controller('BienvenidaController', function ($stateParams, Recetas
 	    	self.recetasMostradas = _.map(response.data, Receta.asReceta);
 		});
 	};
-	RecetasService.recetasMostradas = self.recetasMostradas;
+
+	RecetasService.recetasEnGrilla = self.recetasMostradas;
 	self.getRecetasAMostrar();
 });
 
