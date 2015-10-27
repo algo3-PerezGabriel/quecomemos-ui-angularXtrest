@@ -17,13 +17,6 @@ queComemosApp.controller('BienvenidaController', function ($stateParams, Recetas
 });
 
 queComemosApp.controller('LonginController', function ($scope, RecetasService){
-	$scope.credentials = {
-		username:'',
-		password:''
-	};
-		$scope.login = function (credentials){
-			RecetasService.nombreUsr = credentials.username;
-		};
 
 });
 
