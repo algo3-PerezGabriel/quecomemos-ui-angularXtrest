@@ -37,3 +37,7 @@ queComemosApp.controller('DetalleController', function ($stateParams, RecetasSer
 	this.esFavorita = true;
 	/*esto debe ser una funcion que evalue con el usr traído por el log*/
 });
+
+queComemosApp.controller('EditarController', function ($stateParams){
+	this.idReceta = $stateParams.identificador;
+});

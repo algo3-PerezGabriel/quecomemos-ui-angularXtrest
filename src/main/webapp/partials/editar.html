@@ -1,9 +1,13 @@
-<form class="form-horizontal well well-lg" name="editForm" ng-controller="editarCtrl"
-      ng-submit="">
+<form class="form-horizontal well well-lg" name="editForm" ng-submit="editarCtrl.submit">
   
     <div class="form-group">
-      <label for="nuevoNombre">nombre:</label>
+    	<label for="nuevoNombre">ID {{editarCtrl.idReceta}}</label><br>
+
+    	<label for="nuevoNombre">Nombre:</label>
+    	
       <input type="text" id="newName"
              ng-model="credentials.username">
-      <button type="submit" class="btn btn-primary" ui-sref"pantallaBienvenida">Editar</button>
+      <button class="btn btn-danger" ui-sref="verDetalle({identifier: receta.sId})">Atras</button> 
+      <br>
+      <button class="btn btn-primary" ui-sref="pantallaBienvenida">Editar</button>
 </form>

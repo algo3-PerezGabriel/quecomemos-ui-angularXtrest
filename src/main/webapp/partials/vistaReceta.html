@@ -94,12 +94,14 @@
     </div>
     <div class="form-group">
         <div class="col-sm-1 col-sm-offset-4">
-            <button ui-sref="pantallaBienvenida" type="button" class="btn btn-default btn-lg active">
-                Atras
-            </button>
-             <button ui-sref="editar({identificador: detalleCtrl.receta.sId})" type="button" class="btn btn-default btn-lg active">
+            <button ui-sref="pantallaBienvenida" type="button" class="btn btn-danger btn-lg active">
                 Atras
             </button>
         </div>
+    <div class="form-group">
+        <button ui-sref="editar({identificador: detalleCtrl.receta.sId})" type="button" class="btn btn-primary btn-lg active">
+                Editar
+        </button>
+    </div>
     </div>
 </form>
