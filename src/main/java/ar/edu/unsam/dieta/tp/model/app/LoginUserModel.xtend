@@ -20,4 +20,7 @@ class LoginUserModel {
 		
 	}
 	
+	def validarLoginNombre(){
+		new QueComemosAppModel(repoUsuarios.logearUsuarioNombre(nombreUsuario))
+	}
 }

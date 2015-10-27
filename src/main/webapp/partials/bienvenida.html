@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="receta in bienvenidaCtrl.recetasAMostrar">
+      <tr ng-repeat="receta in bienvenidaCtrl.recetasMostradas">
         <td>{{receta.id}}</td>
         <td>
           <a ui-sref="verDetalle({identifier: receta.identificador})">{{receta.nombre}}</a>

@@ -6,16 +6,24 @@ queComemosApp.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider
 
-    .state('pantallaBienvenida', {
-      url: "/",
-      templateUrl: "partials/bienvenida.html",
-      controller: "BienvenidaController as bienvenidaCtrl"
-    })
+/*
+  .state('pantallaLogin', {
+    url:"/",
+    templateUrl: "partials/login.html",
+    controller: "LonginController as loginCtrl"
+  })   
 
-    .state('verDetalle', {
-      url: "/receta/:identifier",
-      templateUrl: "partials/vistaReceta.html",
-      controller: "DetalleController as detalleCtrl"
-    });
+*/
+  .state('pantallaBienvenida', {
+    url: "/",
+    templateUrl: "partials/bienvenida.html",
+    controller: "BienvenidaController as bienvenidaCtrl"
+  })
+
+  .state('verDetalle', {
+    url: "/receta/:identifier",
+    templateUrl: "partials/vistaReceta.html",
+    controller: "DetalleController as detalleCtrl"
+  });
 
 });

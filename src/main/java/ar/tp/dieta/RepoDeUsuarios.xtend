@@ -107,4 +107,9 @@ class RepoDeUsuarios extends RepoRecetas{
 			// esto tmb lanza excepción en caso de no estar bien el pass
 		}
 	}
+	
+	def logearUsuarioNombre(String nombre) {
+		usuarios.findFirst[u | u.getNombre().equals(nombre)]
+	}
+	
 }
