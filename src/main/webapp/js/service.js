@@ -5,7 +5,7 @@ queComemosApp.service('RecetasService',function ($http) {
 	
 	this.recetasEnGrilla = [];
 
-	this.nombreUsr = 'Gabriel';
+	this.nombreUsr = "";
 
 
 	this.restRecetas = function(callback) {

@@ -16,8 +16,11 @@ queComemosApp.controller('BienvenidaController', function ($stateParams, Recetas
 
 });
 
-queComemosApp.controller('LonginController', function ($scope, RecetasService){
+queComemosApp.controller('LonginController', function (RecetasService, $stateParams) {
 
+	this.logear = function (){
+		RecetasService.nombreUsr = 'Gabriel';
+	};
 });
 
 
