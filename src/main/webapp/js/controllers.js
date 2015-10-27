@@ -5,18 +5,15 @@ queComemosApp.controller('BienvenidaController', function ($stateParams, Recetas
 	var self = this;
 	this.recetasMostradas = [];
 
-	this.transformarAReceta = function(recetaJson) {
-			Receta.asReceta(recetaJson);
-	};
-
-	this.getRecetasAMostrar = function() {
-	    RecetasService.findAll (function (response){
-	    	self.recetasMostradas = _.map(response.data, Receta.asReceta);
+	this.traerRecetas = function () {
+		RecetasService.restRecetas(function (response) {
+			RecetasService.recetasEnGrilla = _.map(response.data, Receta.asReceta);
+			self.recetasMostradas = RecetasService.recetasEnGrilla;
 		});
 	};
 
-	RecetasService.recetasEnGrilla = self.recetasMostradas;
-	self.getRecetasAMostrar();
+	self.traerRecetas();
+
 });
 
 queComemosApp.controller('LonginController', function ($scope, RecetasService){
@@ -32,6 +29,11 @@ queComemosApp.controller('LonginController', function ($scope, RecetasService){
 
 
 queComemosApp.controller('DetalleController', function ($stateParams, RecetasService){
-	
+
+	var self = this;
 	this.receta = RecetasService.getRecetaById($stateParams.identifier);
+	
+
+	this.esFavorita = true;
+	/*esto debe ser una funcion que evalue con el usr traído por el log*/
 });

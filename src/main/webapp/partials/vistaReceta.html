@@ -10,7 +10,7 @@
                 <span>{{detalleCtrl.receta.calorias}} <b>calorias</b></span>
             </div>
             <div class="col-sm-2">
-                <span> <b>Creado por: </b>{{detalleCtrl.receta.owner}}</span>
+                <span> <b>Creado por: </b>{{detalleCtrl.receta.nombreOwner}}</span>
             </div>
         </div>
     </div>
@@ -47,9 +47,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="ingrediente in detalleCtrl.receta.ingredientes">
-                        <td>{{ ingrediente.dosis}}</td>
-                        <td>{{ ingrediente.nombreIngrediente}}</td>
+                    <tr ng-repeat="ingre in detalleCtrl.receta.ingredientes">
+                        <td>{{ ingre.cantidad}}</td>
+                        <td>{{ ingre.nombre}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -64,7 +64,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-2">
-            <input type="checkbox" ng-model="detalleCtrl.receta.esFavorita" name="favorita" disabled="false">
+            <input type="checkbox" ng-model="detalleCtrl.esFavorita" name="favorita" disabled="true">
             <label><b>Favorita</b></label>
         </div>
         <div class="col-sm-3 col-sm-offset-4">
@@ -95,6 +95,9 @@
     <div class="form-group">
         <div class="col-sm-1 col-sm-offset-4">
             <button ui-sref="pantallaBienvenida" type="button" class="btn btn-default btn-lg active">
+                Atras
+            </button>
+             <button ui-sref="editar({identificador: detalleCtrl.receta.sId})" type="button" class="btn btn-default btn-lg active">
                 Atras
             </button>
         </div>

@@ -14,6 +14,13 @@ queComemosApp.config(function ($stateProvider, $urlRouterProvider) {
   })   
 
 */
+
+ .state('editar',{
+    url: "/receta/editar/:identificador",
+    templateUrl: "partials/editar.html",
+    controller: "EditarController as editarCtrl"
+  })
+
   .state('pantallaBienvenida', {
     url: "/",
     templateUrl: "partials/bienvenida.html",
@@ -24,6 +31,5 @@ queComemosApp.config(function ($stateProvider, $urlRouterProvider) {
     url: "/receta/:identifier",
     templateUrl: "partials/vistaReceta.html",
     controller: "DetalleController as detalleCtrl"
-  });
-
+  })
 });

@@ -11,7 +11,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class Receta extends ElementoDeReceta implements Cloneable{
 
 
-	String id
+	public String sId
 	//String nombreDeLaReceta
 	public int calorias
 	ArrayList<ElementoDeReceta> elementosDeReceta = new ArrayList<ElementoDeReceta> //Integra ingredientes, condimentos y subrecetas.	
@@ -21,6 +21,7 @@ class Receta extends ElementoDeReceta implements Cloneable{
 	int tiempoPreparacion
 	int anioDeCreacion
 	Usuario owner
+	String nombreOwner
 
 	def void agregarIngrediente(Ingrediente unIngrediente){
 		unIngrediente.setIngrediente()
@@ -120,7 +121,7 @@ class Receta extends ElementoDeReceta implements Cloneable{
 		
 	}
 	
-	def obtenerCondicionesAsString(){
+	def getCondiciones(){
 		val List<String> condicionesInadecuadas = new ArrayList<String>
 		if(this.inadecuadaParaCondiciones(new CondicionCeliaco).equals(true)){
 			condicionesInadecuadas.add("Celiacos")

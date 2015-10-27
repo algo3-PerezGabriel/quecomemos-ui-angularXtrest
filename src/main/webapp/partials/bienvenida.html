@@ -14,9 +14,9 @@
     </thead>
     <tbody>
       <tr ng-repeat="receta in bienvenidaCtrl.recetasMostradas">
-        <td>{{receta.id}}</td>
+        <td>{{receta.sId}}</td>
         <td>
-          <a ui-sref="verDetalle({identifier: receta.identificador})">{{receta.nombre}}</a>
+          <a ui-sref="verDetalle({identifier: receta.sId})">{{receta.nombre}}</a>
         </td>
         <td>{{receta.calorias}}</td>
         <td>{{receta.dificultad}}</td>

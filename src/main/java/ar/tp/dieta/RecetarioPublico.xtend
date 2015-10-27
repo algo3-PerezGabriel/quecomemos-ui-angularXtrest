@@ -16,7 +16,7 @@ class RecetarioPublico implements Cloneable{
 	def void agregarReceta(Receta unaReceta) {
 		//agrega recetas al recetario
 		contador ++
-		unaReceta.id = Integer.toString(contador)
+		unaReceta.sId = Integer.toString(contador)
 		recetas.add(unaReceta)
 	}
 
@@ -43,7 +43,7 @@ class RecetarioPublico implements Cloneable{
 	}
 	
 	def recetaById(String idReceta){
-		recetas.findFirst[getId.equals(idReceta)]
+		recetas.findFirst[getSId.equals(idReceta)]
 	}
 	
 }

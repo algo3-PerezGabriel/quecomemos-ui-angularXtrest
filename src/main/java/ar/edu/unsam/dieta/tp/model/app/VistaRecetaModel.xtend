@@ -25,10 +25,6 @@ class VistaRecetaModel {
 		laReceta.getCondimentos
 	}
 	
-	def getCondicionesPreexistentes(){
-		laReceta.obtenerCondicionesAsString
-	}
-	
 	def getEsFavorita() { elUsuario.tieneFavorita(laReceta) }
 	
 	def void setEsFavorita(boolean valor){ //valor viene del check y en base a eso faveo o desfaveo
