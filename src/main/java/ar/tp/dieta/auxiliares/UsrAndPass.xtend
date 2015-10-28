@@ -8,8 +8,10 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class UsrAndPass {
 	String nombre
 	String password
+	String id
 
-	new (String nomb, String pass){
+	new (String nomb, String pass, String ident){
+		id = ident
 		nombre = nomb
 		password = pass
 	}

@@ -12,6 +12,16 @@ queComemosApp.controller('BienvenidaController', function ($stateParams, Recetas
 		});
 	};
 
+	this.favearReceta = function(recetaId){
+		var receta;
+		for (receta in self.recetasMostradas){
+			if (receta.sId === recetaId){
+				if(receta.esFavorita === false){receta.esFavorita = true;}
+				else {receta.esFavorita = false;}
+			}
+		}
+	};
+
 	self.traerRecetas();
 
 });
@@ -20,6 +30,7 @@ queComemosApp.controller('LonginController', function (RecetasService, $statePar
 	
 	var self = this;
 	this.usr = {
+		'id' : '',
 		'nombre':'',
 		'password': ''
 	};
@@ -39,7 +50,7 @@ queComemosApp.controller('DetalleController', function ($stateParams, RecetasSer
 	this.receta = RecetasService.getRecetaById($stateParams.identifier);
 	
 
-	this.esFavorita = true;
+	this.esFavorita = self.receta.esFavorita;
 	/*esto debe ser una funcion que evalue con el usr traído por el log*/
 });
 
