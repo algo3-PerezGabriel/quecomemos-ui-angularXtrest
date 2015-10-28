@@ -17,11 +17,20 @@ queComemosApp.controller('BienvenidaController', function ($stateParams, Recetas
 });
 
 queComemosApp.controller('LonginController', function (RecetasService, $stateParams) {
+	
+	var self = this;
+	this.usr = {
+		'nombre':'',
+		'password': ''
+	};
 
 	this.logear = function (){
-		RecetasService.nombreUsr = 'Gabriel';
+		RecetasService.usr = self.usr;
 	};
+
 });
+
+
 
 
 queComemosApp.controller('DetalleController', function ($stateParams, RecetasService){

@@ -5,12 +5,12 @@ queComemosApp.service('RecetasService',function ($http) {
 	
 	this.recetasEnGrilla = [];
 
-	this.nombreUsr = "";
+	this.usr = {};
 
 
 	this.restRecetas = function(callback) {
-      $http.get('/logearUsuario/'+ self.nombreUsr).then(callback);
-    };
+      $http.post('/logearUsuario', self.usr).then(callback);
+    }; /* $http.post('/logearUsuario/', self.usr).then(callback);*/
 
 	this.getRecetaById = function (identifier) {
     	return _.find(self.recetasEnGrilla, function(receta) {
