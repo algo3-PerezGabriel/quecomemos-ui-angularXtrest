@@ -1,6 +1,7 @@
 package ar.edu.unsam.dieta.tp.model.app
 
 import ar.tp.dieta.RepoDeUsuarios
+import ar.tp.dieta.Usuario
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 
@@ -14,13 +15,11 @@ class LoginUserModel {
 
 	String nombreUsuario
 	String passwordUsuario
+	Usuario usrLogeado
 	
-	def validarLogin() { 
-		new QueComemosAppModel(repoUsuarios.logearUsuario(nombreUsuario, passwordUsuario))
-		
+	def validarLogin() {
+		usrLogeado = repoUsuarios.logearUsuario(nombreUsuario, passwordUsuario)
+		usrLogeado != null
 	}
 	
-	def validarLoginNombre(){
-		new QueComemosAppModel(repoUsuarios.logearUsuarioNombre(nombreUsuario))
-	}
 }

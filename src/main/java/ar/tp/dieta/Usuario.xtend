@@ -77,7 +77,7 @@ class Usuario extends Miembro {
 	}
 	
 	public def void agregarReceta(Receta unaReceta){
-		unaReceta.setOwner(this)
+		unaReceta.setNombreOwner(this.nombre)
 		misRecetas.add(unaReceta)
 	}
 //	//Copiar una recetaPublica a la coleccion de recetas del usuario
@@ -90,7 +90,7 @@ class Usuario extends Miembro {
 	public def void crearReceta(String nombre, int calorias, String dificultad, String preparacion, String temporada, Ingrediente ingrediente1, Ingrediente ingrediente2 ) {
 		var Receta nuevaReceta = new RecetaBuilder(nombre)
 		.calorias(calorias)
-		.owner(this)
+		.owner(this.nombre)
 		.dificultad(dificultad)
 		.procesoPreparacion(preparacion)
 		.temporada(temporada)
@@ -146,10 +146,6 @@ class Usuario extends Miembro {
 	
 	def void noAgregarResultadosDeConsultasAFavoritos(){
 		resultadoDeConsultasAFavoritos = false
-	}
-	
-	def boolean contenesEstaRecetaEnFavs(Receta unaReceta){
-		recetasFavoritas.contains(unaReceta)
 	}
 
 	def List<Receta> recetasQuePuedoVer(){

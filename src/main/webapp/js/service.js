@@ -2,21 +2,26 @@
 queComemosApp.service('RecetasService',function ($http) {
 	
 	var self = this;
-	
-	this.recetasEnGrilla = [];
 
-	this.usr = {};
-
+	this.restToLog = function (callback, errorHandler) {
+		$http.post('/logearUsuario',self.usr).then(callback, errorHandler);
+	};
 
 	this.restRecetas = function(callback) {
-      $http.post('/logearUsuario', self.usr).then(callback);
-    }; /* $http.post('/logearUsuario/', self.usr).then(callback);*/
+    	$http.get('/recetasToGrill').then(callback);
+    };
 
-	this.getRecetaById = function (identifier) {
-    	return _.find(self.recetasEnGrilla, function(receta) {
-      		return receta.sId === identifier;
-    	});
+    this.restFavoritear = function (recetaId, callback, errorHandler) {
+    	$http.put('/recetaFavoritear/'+recetaId).then(callback, errorHandler);
     };
     
-});
+    this.restEsfavorita = function (recetaId, callback, errorHandler){
+    	$http.get('/recetaEsFavorita/'+recetaId).then(callback, errorHandler);
+    };
 
+	this.getRecetaById = function (identifier) {
+		return _.find(self.recetasEnGrilla, function(receta) {
+	  		return receta.sId === identifier;
+		});
+	};
+});

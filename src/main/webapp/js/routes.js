@@ -22,7 +22,7 @@ queComemosApp.config(function ($stateProvider, $urlRouterProvider) {
   .state('verDetalle', {
     url: "/receta/:identifier",
     templateUrl: "partials/vistaReceta.html",
-    controller: "DetalleController as detalleCtrl"
+    controller: "DetalleRecetaController as detalleCtrl"
   })
 
  .state('editar',{

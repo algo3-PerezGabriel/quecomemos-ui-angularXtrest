@@ -20,8 +20,10 @@ class Receta extends ElementoDeReceta implements Cloneable{
 	String temporada
 	int tiempoPreparacion
 	int anioDeCreacion
-	Usuario owner
 	String nombreOwner
+	boolean esFavorita
+	
+	
 
 	def void agregarIngrediente(Ingrediente unIngrediente){
 		unIngrediente.setIngrediente()
@@ -146,7 +148,7 @@ class Receta extends ElementoDeReceta implements Cloneable{
 		var Receta receta = new RecetaBuilder(nombreNuevo)
 								.calorias(this.calorias)
 								.dificultad(this.dificultad)
-								.owner(this.owner)
+								.owner(this.nombreOwner)
 								.procesoPreparacion(this.preparacion)
 								.build()
 			receta.elementosDeReceta = this.elementosDeReceta

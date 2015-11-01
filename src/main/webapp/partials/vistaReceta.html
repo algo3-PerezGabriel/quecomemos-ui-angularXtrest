@@ -1,8 +1,9 @@
+<div>
 <form class=" container form-horizontal">
     <div class="container table table-bordered">
         <div class="form-group">
             <div class="col-sm-3">
-                <span><h4>{{detalleCtrl.receta.nombre}}</h4></span>
+                <span><h4 >{{detalleCtrl.receta.nombre}}</h4></span>
             </div>
         </div>
         <div class="form-group">
@@ -64,7 +65,7 @@
     </div>
     <div class="form-group">
         <div class="col-sm-2">
-            <input type="checkbox" ng-model="detalleCtrl.esFavorita" name="favorita" disabled="true">
+            <input type="checkbox" ng-model="detalleCtrl.receta.esFavorita" name="favorita" disabled="true">
             <label><b>Favorita</b></label>
         </div>
         <div class="col-sm-3 col-sm-offset-4">
@@ -94,14 +95,15 @@
     </div>
     <div class="form-group">
         <div class="col-sm-1 col-sm-offset-4">
-            <button ui-sref="pantallaBienvenida" type="button" class="btn btn-danger btn-lg active">
-                Atras
-            </button>
+            <button ui-sref="pantallaBienvenida"
+                    type="button"
+                    class="btn btn-danger btn-lg active">Atras</button>
         </div>
     <div class="form-group">
-        <button ui-sref="editar({identificador: detalleCtrl.receta.sId})" type="button" class="btn btn-primary btn-lg active">
-                Editar
-        </button>
+        <button ui-sref="editar({identificador: detalleCtrl.receta.sId})"
+                type="button"
+                class="btn btn-primary btn-lg active">Editar</button>
     </div>
     </div>
 </form>
+</div>

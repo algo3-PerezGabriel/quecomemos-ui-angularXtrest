@@ -61,11 +61,19 @@ class QueComemosAppModel {
 	}
 	
 	def tieneFavorita(Receta unaReceta){
-		theUser.tieneFavorita(unaReceta)
+		if(theUser.tieneFavorita(unaReceta)){
+			unaReceta.setEsFavorita(true)
+			return true
+		}
+		return false
 	}
 	
 	def vistaDetalle() {
 		new VistaRecetaModel(theUser, recetaSeleccionada)
+	}
+	
+	def seleccionadaGrillaPorId(String id){
+		recetasEnGrilla.findFirst[sId.equals(id)]
 	}
 	
 	def establecerSelecionadaPorId(String id){

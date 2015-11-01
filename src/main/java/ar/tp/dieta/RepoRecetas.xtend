@@ -59,17 +59,10 @@ class RepoRecetas {
 		azafran = new IngredienteBuilder("azafran").cantidad(2).build()
 		sal = new IngredienteBuilder("sal").cantidad(2).build()
 		
-		usuarioPublico = new UsuarioBuilder("Publico")
-								.peso(100.4)
-								.altura(1.89)
-								.fechaNacimiento(1990, 4, 3)
-								.sexo("M")
-								.rutina(new RutinaSedentaria)
-								.build()
 		
 		arrozConPollo = new RecetaBuilder("Arroz con Pollo")
 				.calorias(500)
-				.owner(usuarioPublico)
+				.owner("Publico")
 				.dificultad("Mediana")
 				.procesoPreparacion("Hervir el arroz con azafran y agregar el pollo previamente salteado")
 				.temporada("INVIERNO")
@@ -80,7 +73,7 @@ class RepoRecetas {
 				
 		fideosConManteca = new RecetaBuilder("Fideos con manteca")
 				.calorias(600)
-				.owner(usuarioPublico)
+				.owner("Publico")
 				.dificultad("Facil")
 				.procesoPreparacion("Hervir los fideos. Colar.")
 				.temporada("INVIERNO")
@@ -91,7 +84,7 @@ class RepoRecetas {
 				
 		lomoMostaza = new RecetaBuilder("Lomo a la Mostaza")
 				.calorias(1200)
-				.owner(usuarioPublico)
+				.owner("Publico")
 				.dificultad("Dificil")
 				.procesoPreparacion("Poner el lomo con la mostaza en el horno.")
 				.temporada("VERANO")
@@ -102,7 +95,7 @@ class RepoRecetas {
 				
 		gelatinaFrambuesa = new RecetaBuilder("Gelatina de Frambuesa")
 				.calorias(120)
-				.owner(usuarioPublico)
+				.owner("Publico")
 				.dificultad("Facil")
 				.procesoPreparacion("Mezclar gelatina azucar y agua")
 				.temporada("VERANO")
@@ -112,7 +105,7 @@ class RepoRecetas {
 		
 		ensalada = new RecetaBuilder("Ensalada")
 				.calorias(100)
-				.owner(usuarioPublico)
+				.owner("Publico")
 				.dificultad("Facil")
 				.procesoPreparacion("Cortar la verdura y mezclar. No olvidar de lavar")
 				.temporada("TODO EL AÑO")
@@ -124,7 +117,7 @@ class RepoRecetas {
 		
 		arrozBlanco = new RecetaBuilder("Arroz Blanco")
 				.calorias(250)
-				.owner(usuarioPublico)
+				.owner("Publico")
 				.dificultad("Facil")
 				.procesoPreparacion("Hervir el arroz. Comer.")
 				.temporada("INVIERNO")
@@ -133,7 +126,7 @@ class RepoRecetas {
 		
 		asado = new RecetaBuilder("Asado")
 				.calorias(2500)
-				.owner(usuarioPublico)
+				.owner("Publico")
 				.dificultad("Mediana")
 				.procesoPreparacion("Prender el fuego y asar la carne. Condimentar a gusto")
 				.temporada("TODO EL AÑO")
