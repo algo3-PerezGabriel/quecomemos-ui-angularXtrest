@@ -62,11 +62,17 @@ class QueComemosController {
 		ok(modeloBienvenida.recetasEnGrilla.toJson)
 	}
 	
+	@Get("/tituloEnGrilla")
+	def Result titulo(){
+		ok(modeloBienvenida.outputTituloGrilla.toJson)
+	}
 	@Get("/busquedaRecetas")
 	def Result busqueda(@Body String body){
 		
 		try {
 			var BusquedaRecetaFromView  busqueda = gson.fromJson(body, BusquedaRecetaFromView )
+			if (busqueda == null){ return badRequest ('{ "estado" : "no se parsea la busqueda"}')}
+			
 			busqueda.cargarModelo(modeloBienvenida)
 			modeloBienvenida.ejecutarBusqueda
 			ok('{"estado":"ok"}')
@@ -94,7 +100,7 @@ class QueComemosController {
 
 
 	def static void main(String[] args) {
-		XTRest.start(QueComemosController, 9005)
+		XTRest.start(QueComemosController, 9006)
 	}
 }
 

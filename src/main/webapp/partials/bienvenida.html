@@ -1,10 +1,78 @@
-<div>
 
-  <div class="example-animate-container" style="padding-top:10px">
+
+<div class="example-animate-container" style="padding-top:10px">
     <div class="alert alert-danger animate-repeat" ng-repeat="msjeRor in bienvenidaCtrl.errorEstado">{{msjeRor}}</div>
-  </div>
+</div>
+
+<form class="form-horizontal well well-lg">
+    <div class="form-group">
+        <div class="col-sm-3">
+            <label><b>Nombre</b></label>
+        </div>
+        <div class="col-sm-2 col-sm-offset-3">
+        <label><b>Calorías</b></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <input class="text" ng-model="bienvenidaCtrl.busqueda.nombreBuscado">
+        </div>
+        <div class="col-sm-6 col-sm-offset-3">
+            <label><b>de</b></label>
+            <input class="text" ng-model="bienvenidaCtrl.busqueda.caloriasDesde">
+            <label><b>a</b></label>
+            <input class="text" ng-model="bienvenidaCtrl.busqueda.caloriasHasta">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <label><b>Dificultad</b></label>
+        </div>
+        <div class="col-sm-2 col-sm-offset-3">
+            <label><b>Temporada</b></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <select>
+                <option ng-repeat="dificultad in bienvenidaCtrl.listsAux.dificultades">
+                {{dificultad}}
+                </option>
+            </select>
+        </div>
+        <div class="col-sm-2 col-sm-offset-3">
+            <select>
+                <option ng-repeat="temporada in bienvenidaCtrl.listsAux.temporadas">
+                {{temporada}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <label>Contiene ingrediente</label>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3">
+            <input type="checkbox" ng-model="bienvenidaCtrl.busqueda.filtroUsuario">
+            <label>aplicar filtros del perfil de usuario</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <input type="text" ng-model="bienvenidaCtrl.busqueda.ingrediente">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary" ng-click="bienvenidaCtrl.buscarRecetas()">
+            Buscar
+            </button>
+        </div>
+    </div>
+
+<div>
   <div class="panel-heading">
-    <h4>Recetas Mostradas</h4>
+    <h5>{{bienvenidaCtrl.tituloGrilla}}</h5>
   </div>
   <table class="table table-striped table-hover table-bordered">
     <thead>
@@ -39,3 +107,5 @@
       </tr>
     </tbody>
 </div>
+
+</form>

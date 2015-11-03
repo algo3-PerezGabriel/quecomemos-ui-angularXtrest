@@ -12,7 +12,7 @@ queComemosApp.service('RecetasService',function ($http) {
     };
 
     this.restFavoritear = function (recetaId, callback, errorHandler) {
-    	$http.put('/recetaFavoritear/'+recetaId).then(callback, errorHandler);
+    	$http.put('/recetaFavoritear/'+recetaId).then(callback, erro/rHandler);
     };
     
     this.restEsfavorita = function (recetaId, callback, errorHandler){
@@ -21,6 +21,14 @@ queComemosApp.service('RecetasService',function ($http) {
 
     this.restCopiarReceta = function(recetaId, nombreNuevo, callback, errorHandler){
     	$http.put('/copiarReceta/'+recetaId,nombreNuevo).then(callback, errorHandler);
+    };
+
+    this.restBusqueda = function(busqueda, callback, errorHandler){
+    	$http.get('/busquedaRecetas',busqueda);
+    };
+
+    this.restTituloGrilla = function (callback){
+        $http.get('/tituloEnGrilla').then(callback);
     };
 
 	this.getRecetaById = function (identifier) {

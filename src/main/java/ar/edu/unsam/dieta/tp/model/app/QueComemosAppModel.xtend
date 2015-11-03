@@ -87,7 +87,7 @@ class QueComemosAppModel {
 	}
 	
 	def ejecutarBusqueda() {
-		outputTituloGrilla = "Resultado de la busquedaaaaa"
+		outputTituloGrilla = "Resultado de la busqueda"
 		val Busqueda busqueda = new Busqueda()
 		this.crearFiltros(busqueda)
 		
