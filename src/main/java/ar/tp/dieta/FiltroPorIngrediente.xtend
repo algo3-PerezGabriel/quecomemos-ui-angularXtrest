@@ -10,7 +10,7 @@ class FiltroPorIngrediente implements Filtro {
 	new(String unIngrediente){
 		ingrediente = unIngrediente
 	}
-	override aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetasSinFiltrar) {
+	override aplicarFiltro(List<Receta> recetasSinFiltrar) {
 		if (ingrediente == ""){return recetasSinFiltrar}
 			else{recetasSinFiltrar.filter[contieneIngrediente(ingrediente)].toList}
 	}

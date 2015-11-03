@@ -21,20 +21,15 @@ class Busqueda {
 		filtros.remove(unFiltro)
 	}
 	
-	def List<Receta> aplicarBusquedaUsuario(Usuario usuario, List<Receta> recetas) {
+	def List<Receta> aplicarBusqueda(List<Receta> recetas) {
 		
 		recetasAuxiliar = recetas
 		
 		filtros.forEach[filtro | 
-			recetasAuxiliar = filtro.aplicarFiltroUsuario(usuario,recetasAuxiliar)
+			recetasAuxiliar = filtro.aplicarFiltro(recetasAuxiliar)
 		]
 		 
 		recetasAuxiliar
-//		var int counter = 0
-//		while(counter < filtros.size()){
-//		//Itero sobre cada filtro en la coleccion y aplico cada filtro una y otra vez sobre la misma coleccion
-//			recetasFiltradas=filtros.get(counter).aplicarFiltroUsuario(usuario, recetasFiltradas)
-//			counter++
-//		}
+
 	}
 }

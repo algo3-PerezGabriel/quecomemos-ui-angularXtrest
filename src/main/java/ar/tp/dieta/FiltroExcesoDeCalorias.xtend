@@ -5,7 +5,7 @@ import java.util.ArrayList
 
 class FiltroExcesoDeCalorias implements Filtro {
 
-	override List<Receta> aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetas) {
+	def List<Receta> aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetas) {
 		if (unUsuario.tieneSobrepeso) {
 			var List<Receta> recetasADevolver = new ArrayList<Receta>
 			for (Receta elemento : recetas.filter[receta | !receta.exesoDeCalorias]) {
@@ -16,6 +16,10 @@ class FiltroExcesoDeCalorias implements Filtro {
 		else { 
 			recetas
 		}
+	}
+	
+	override aplicarFiltro(List<Receta> recetasSinFiltrar) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 }

@@ -10,7 +10,7 @@ class FiltroPorNombre implements Filtro {
 	new(String unNombre){
 		nombre = unNombre
 	}
-	override aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetasSinFiltrar) {
+	override aplicarFiltro(List<Receta> recetasSinFiltrar) {
 		if (nombre == ""){return recetasSinFiltrar}
 			else{recetasSinFiltrar.filter[devolverNombre.equals(nombre)].toList}
 	}

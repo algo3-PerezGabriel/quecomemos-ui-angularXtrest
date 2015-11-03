@@ -16,7 +16,6 @@ queComemosApp.controller('LonginController', function (RecetasService, $state, $
 
 	this.logear = function (){
 		
-		/* aca tendria que usar un servicio REST post para validar, y proximamente decidir quedarse o segur en pantalla*/
 		RecetasService.usr = self.usr;
 		RecetasService.restToLog( function () {
 				$state.go("pantallaBienvenida");	

@@ -12,7 +12,6 @@ class Receta extends ElementoDeReceta implements Cloneable{
 
 
 	public String sId
-	//String nombreDeLaReceta
 	public int calorias
 	ArrayList<ElementoDeReceta> elementosDeReceta = new ArrayList<ElementoDeReceta> //Integra ingredientes, condimentos y subrecetas.	
 	String preparacion
@@ -150,6 +149,7 @@ class Receta extends ElementoDeReceta implements Cloneable{
 								.dificultad(this.dificultad)
 								.owner(this.nombreOwner)
 								.procesoPreparacion(this.preparacion)
+								.temporada(this.temporada)
 								.build()
 			receta.elementosDeReceta = this.elementosDeReceta
 			receta

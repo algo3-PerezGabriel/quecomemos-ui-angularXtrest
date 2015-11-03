@@ -19,6 +19,10 @@ queComemosApp.service('RecetasService',function ($http) {
     	$http.get('/recetaEsFavorita/'+recetaId).then(callback, errorHandler);
     };
 
+    this.restCopiarReceta = function(recetaId, nombreNuevo, callback, errorHandler){
+    	$http.put('/copiarReceta/'+recetaId,nombreNuevo).then(callback, errorHandler);
+    };
+
 	this.getRecetaById = function (identifier) {
 		return _.find(self.recetasEnGrilla, function(receta) {
 	  		return receta.sId === identifier;

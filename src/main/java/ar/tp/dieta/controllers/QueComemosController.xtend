@@ -3,6 +3,7 @@ package ar.tp.dieta.controllers
 import ar.edu.unsam.dieta.tp.model.app.LoginUserModel
 import ar.edu.unsam.dieta.tp.model.app.QueComemosAppModel
 import ar.tp.dieta.Receta
+import ar.tp.dieta.auxiliares.BusquedaRecetaFromView
 import ar.tp.dieta.auxiliares.UsrAndPass
 import com.google.gson.Gson
 import org.uqbar.xtrest.api.Result
@@ -36,6 +37,13 @@ class QueComemosController {
 			ok('{ "estado" : "ok", "favorita" : "false"}')
 		}catch (Exception e){ badRequest(e.message)}
 	}
+
+	@Put("/copiarReceta/:idReceta")
+	def Result copiarReceta(@Body String body){
+		var String nuevoNombre = gson.fromJson(body, String)
+		modeloBienvenida.clonarRecetaPorId(idReceta,nuevoNombre)
+		ok('{"estado":"ok"')
+	}
 	
 	@Put("/recetaFavoritear/:idReceta")
 	def Result favearReceta(){
@@ -54,6 +62,16 @@ class QueComemosController {
 		ok(modeloBienvenida.recetasEnGrilla.toJson)
 	}
 	
+	@Get("/busquedaRecetas")
+	def Result busqueda(@Body String body){
+		
+		try {
+			var BusquedaRecetaFromView  busqueda = gson.fromJson(body, BusquedaRecetaFromView )
+			busqueda.cargarModelo(modeloBienvenida)
+			modeloBienvenida.ejecutarBusqueda
+			ok('{"estado":"ok"}')
+		}catch (Exception e){ badRequest(e.message)}
+	}
 	
 	@Post("/logearUsuario")
 	def Result logUsuario(@Body String body) {
@@ -76,7 +94,7 @@ class QueComemosController {
 
 
 	def static void main(String[] args) {
-		XTRest.start(QueComemosController, 9000)
+		XTRest.start(QueComemosController, 9005)
 	}
 }
 

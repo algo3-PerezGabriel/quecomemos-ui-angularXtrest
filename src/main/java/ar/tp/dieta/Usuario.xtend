@@ -25,6 +25,8 @@ class Usuario extends Miembro {
 	Boolean resultadoDeConsultasAFavoritos = false
 	String password
 	
+	int contadorRecetas = 0
+	
 	public def setFechaDeNacimiento(int ano, int mes, int diaDelMes) {
 		fechaDeNacimiento = new GregorianCalendar(ano, mes, diaDelMes)
 	}
@@ -77,16 +79,11 @@ class Usuario extends Miembro {
 	}
 	
 	public def void agregarReceta(Receta unaReceta){
-		unaReceta.setNombreOwner(this.nombre)
+		unaReceta.setSId(contadorRecetas.toString+this.nombre)
+		contadorRecetas ++
 		misRecetas.add(unaReceta)
 	}
-//	//Copiar una recetaPublica a la coleccion de recetas del usuario
-//	public def void agregarRecetaPublicaAMiColeccion(String nombreReceta) {
-//		var Receta recetaNueva = new Receta
-//		misRecetas.add(recetario.copiarReceta(recetaNueva, nombreReceta))
-//	}
 
-	// Crear una receta privada
 	public def void crearReceta(String nombre, int calorias, String dificultad, String preparacion, String temporada, Ingrediente ingrediente1, Ingrediente ingrediente2 ) {
 		var Receta nuevaReceta = new RecetaBuilder(nombre)
 		.calorias(calorias)
@@ -129,15 +126,20 @@ class Usuario extends Miembro {
 	
 	def void agregarRecetaFavorita(Receta unaReceta){
 			recetasFavoritas.add(unaReceta)
+			unaReceta.setEsFavorita(true);
 	}
 	
 	def quitarFavorita(Receta unaReceta){
 			recetasFavoritas.remove(unaReceta)
+			unaReceta.setEsFavorita(false)
 	}
 	
 	def favearReceta(Receta unaReceta){
-		if(recetasFavoritas.contains(unaReceta)){ recetasFavoritas.remove(unaReceta)}
-		else{recetasFavoritas.add(unaReceta)}
+		if(!this.tieneFavorita(unaReceta)){
+			this.agregarRecetaFavorita(unaReceta)
+			}else{ 
+				this.quitarFavorita(unaReceta)
+			}
 	}
 	
 	def void agregarResultadosDeConsultasAFavoritos(){
@@ -180,7 +182,7 @@ class Usuario extends Miembro {
 		if(!misBusquedas.empty){
 			var Iterator<Busqueda> iterBusqueda = misBusquedas.iterator()
 	 		while(iterBusqueda.hasNext){
-	   			recetasFiltradas = (iterBusqueda.next).aplicarBusquedaUsuario(this,recetasFiltradas)
+	   			recetasFiltradas = (iterBusqueda.next).aplicarBusqueda(recetasFiltradas)
 			}
 		}
 		recetasFiltradas

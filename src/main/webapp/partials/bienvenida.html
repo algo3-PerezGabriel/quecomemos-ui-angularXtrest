@@ -9,8 +9,7 @@
   <table class="table table-striped table-hover table-bordered">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Es Favorita</th>
+        <th>Estado</th>
         <th>Nombre</th>
         <th>Calorias</th>
         <th>Dificultad</th>
@@ -21,17 +20,21 @@
     <tbody>
       <tr ng-repeat="receta in bienvenidaCtrl.recetasMostradas">
         <td>
-        <input type="checkbox" ng-model="receta.esFavorita" name="favorita" disabled="true">
+          <input type="checkbox" ng-model="receta.esFavorita" name="favorita" disabled="true">
+          favorita
         </td>
         <td>
           <a ui-sref="verDetalle({identifier: receta.sId})">{{receta.nombre}}</a>
         </td>
-        <td>{{receta.sId}}</td>
         <td>{{receta.calorias}}</td>
         <td>{{receta.dificultad}}</td>
         <td>{{receta.temporada}}</td>
         <td>
           <button ng-click="bienvenidaCtrl.favearReceta(receta.sId)" class="btn btn-warning">Favorita</button>
+          <button ui-sref="editar({identificador: receta.sId})"
+                  type="button"
+                  class="btn btn-warning">Copiar
+          </button>
         </td>
       </tr>
     </tbody>

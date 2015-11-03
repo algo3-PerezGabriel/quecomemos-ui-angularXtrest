@@ -13,7 +13,7 @@ class FiltroRangoCalorias implements Filtro {
 		hasta = conHasta
 	}
 	
-	override aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetasSinFiltrar) {
+	override aplicarFiltro(List<Receta> recetasSinFiltrar) {
 		if(desde == -1 ){ if(hasta == -1){ return recetasSinFiltrar}
 			recetasSinFiltrar.filter[receta | receta.getCalorias() < hasta].toList
 		}

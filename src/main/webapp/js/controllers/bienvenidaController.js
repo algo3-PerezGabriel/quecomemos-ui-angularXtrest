@@ -4,6 +4,7 @@
 
 	var self = this;
 	self.errorEstado = [];
+	self.busqueda = {};
 
 	this.lasRecetas = function(){
 		RecetasService.restRecetas( function (response){
@@ -20,6 +21,14 @@
 		});
 		self.lasRecetas();
 	};
+
+	this.buscarRecetas = function () {
+		RecetasService.restBusqueda(self.busqueda, function(response){
+			self.lasRecetas();
+		}, function (respuesta){
+			self.errorEstado.push(respuesta.data.estado);
+		});
+	}
 
 	this.lasRecetas();
 });

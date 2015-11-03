@@ -2,7 +2,9 @@ package ar.edu.unsam.dieta.tp.model.app
 
 import ar.tp.dieta.Busqueda
 import ar.tp.dieta.FiltroPorDificultad
+import ar.tp.dieta.FiltroPorIngrediente
 import ar.tp.dieta.FiltroPorNombre
+import ar.tp.dieta.FiltroPorTemporada
 import ar.tp.dieta.FiltroRangoCalorias
 import ar.tp.dieta.Receta
 import ar.tp.dieta.RecetarioPublico
@@ -28,8 +30,8 @@ class QueComemosAppModel {
 	String conDificultad
 	String conIngrediente
 	String conTemporada
-	String caloriasInferior
-	String caloriasSuperior
+	int caloriasInferior
+	int caloriasSuperior
 	boolean conFiltrosUsuario
 	
 	
@@ -38,10 +40,19 @@ class QueComemosAppModel {
 		recetasEnGrilla = this.decidirRecetas()
 	}
 	
-	def decidirRecetas(){
+	
+	//parche para que funcione
+	def copiarRecetas (List<Receta> out, List<Receta> in){
+		out.forEach[r | in.add(r)]
+	}
+	
+	def decidirRecetas(){	
+		var List<Receta> recetasSalida = new ArrayList<Receta>
+			
 		if(!theUser.sinFavoritas){ 
 			outputTituloGrilla = "Estas son tus recetas favoritas"
-			theUser.getRecetasFavoritas()
+			this.copiarRecetas(theUser.getRecetasFavoritas(),recetasSalida)
+			recetasSalida
 		}
 		else{
 			if(!theUser.sinConsultadas){ 
@@ -50,27 +61,22 @@ class QueComemosAppModel {
 			}
 			else{ //Si no hay recetas favoritas ni busquedas
 				outputTituloGrilla = "Estas son las recetas top del momento"
-				recetario.recetas
+				recetario.getRecetas()
 				 //aca habría que hacer un recetario.getTopten() da igual para ejemplo
 			}
 		}
 	}
 	
+	
+	//se modifico en Usuario, el manejo del atributo:
+	// Boolean esFavorita de Receta.
 	def favearReceta(Receta unaReceta){
 		theUser.favearReceta(unaReceta)
 	}
 	
 	def tieneFavorita(Receta unaReceta){
-		if(theUser.tieneFavorita(unaReceta)){
-			unaReceta.setEsFavorita(true)
-			return true
+		theUser.tieneFavorita(unaReceta)
 		}
-		return false
-	}
-	
-	def vistaDetalle() {
-		new VistaRecetaModel(theUser, recetaSeleccionada)
-	}
 	
 	def seleccionadaGrillaPorId(String id){
 		recetasEnGrilla.findFirst[sId.equals(id)]
@@ -85,30 +91,29 @@ class QueComemosAppModel {
 		val Busqueda busqueda = new Busqueda()
 		this.crearFiltros(busqueda)
 		
-		recetasEnGrilla = busqueda.aplicarBusquedaUsuario(theUser, new RepoRecetas().getRecetarioPublico.getRecetas)
-		//theUser.ultimasConsultadas = recetasEnGrilla
-		//tiene que ejecutar la busqueda,
-		// y dejar el resultado en recetasEnGrilla, tmb modificar el outputTituloGrilla
-		// tambien, se graba el resultado en las ultimas buscadas del usuario (no funncionaria por no haber persistencia)
-		
+		recetasEnGrilla = busqueda.aplicarBusqueda(recetasEnGrilla)
+		//salvar las recetas anteriores, y agregar boton ver recetas anteriores en la vista... ?
 	}
 	
 	def crearFiltros(Busqueda laBusqueda) {
-		var int desdeCaloria
-		var int hastaCaloria
 		
-		if( caloriasInferior == ""){ caloriasInferior = "-1"}
-		if( caloriasSuperior == ""){ caloriasSuperior = "-1"}
-		desdeCaloria = Integer.parseInt(caloriasInferior)
-		hastaCaloria = Integer.parseInt(caloriasSuperior)
+		laBusqueda.agregarFiltro(new FiltroRangoCalorias(caloriasInferior,caloriasSuperior))
+		laBusqueda.agregarFiltro(new FiltroPorTemporada(conTemporada))
+		laBusqueda.agregarFiltro(new FiltroPorNombre(conNombre))
+		laBusqueda.agregarFiltro(new FiltroPorDificultad(conDificultad))
+		laBusqueda.agregarFiltro(new FiltroPorIngrediente(conIngrediente))
+		laBusqueda.agregarFiltro(new FiltroPorNombre(conNombre))
+		}
 	
-		laBusqueda.agregarFiltro(new FiltroRangoCalorias(desdeCaloria,hastaCaloria))
-
-
-//			laBusqueda.agregarFiltro(new FiltroPorTemporada(conTemporada))
-			laBusqueda.agregarFiltro(new FiltroPorNombre(conNombre))
-			laBusqueda.agregarFiltro(new FiltroPorDificultad(conDificultad))
-//			laBusqueda.agregarFiltro(new FiltroPorIngrediente(conIngrediente))
-//			//add(new FiltroPorNombre(conNombre))   areglar cada filtro para que el valor null lo maneje
+	def vistaDetalle() {
+		new VistaRecetaModel(theUser, recetaSeleccionada)
 	}
+	
+	def clonarRecetaPorId(String idReceta, String nombreNuevo) {
+			var Receta recetaSeleccionada = this.seleccionadaGrillaPorId(idReceta)
+			var Receta recetaNueva = recetaSeleccionada.clonateConNombre(nombreNuevo)
+			theUser.agregarReceta(recetaNueva)
+			recetasEnGrilla.add(recetaNueva)
+	}
+	
 }

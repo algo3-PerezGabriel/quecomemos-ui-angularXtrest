@@ -5,12 +5,17 @@ import java.util.ArrayList
 
 class FiltroPorGustos implements Filtro {
 	
-	override aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetas){
+	def aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetas){
 		var List<Receta> recetasADevolver = new ArrayList<Receta>
 		for (Receta elemento :recetas.filter[receta | !unUsuario.noMeGustaEstaReceta(receta)]) {
 				recetasADevolver.add(elemento)
 			}
 			recetasADevolver
 	}
+	
+	override aplicarFiltro(List<Receta> recetasSinFiltrar) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }
 

@@ -1,11 +1,11 @@
-<form class="form-horizontal well well-lg" name="editForm" ng-submit="editarCtrl.submit">
-  
+<form class="form-horizontal well well-lg">
+ 	 <label>{{editarCtrl.receta.nombre}}</label>
+ 	 <br>
     <div class="form-group">
-    	<label for="nuevoNombre">Nombre: {{editarCtrl.receta.nombre}}</label>
+    	<label for="nuevoNombre">Nombre copia:</label>
     	
-      <input type="text" id="newName"
-             ng-model="editarCtrl.receta.nombre">
-      <button class="btn btn-danger" ui-sref="verDetalle({identifier: receta.sId})">Atras</button> 
-      <br>
-      <button class="btn btn-primary" ui-sref="pantallaBienvenida">Editar</button>
+      <input type="text" ng-model="editarCtrl.nombreNuevo" placeholder="Nuevo Nombre">
+      <br><br>
+      <button class="btn btn-danger" ui-sref="pantallaBienvenida">Cancelar</button> 
+      <button class="btn btn-primary" ng-click ="editarCtrl.copiarReceta()">Submit</button>
 </form>

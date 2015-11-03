@@ -11,7 +11,7 @@ class FiltroPorTemporada implements Filtro {
 		temporada = unaTemporada
 	}
 	
-	override aplicarFiltroUsuario(Usuario unUsuario, List<Receta> recetasSinFiltrar) {
+	override aplicarFiltro (List<Receta> recetasSinFiltrar) {
 		if (temporada == ""){return recetasSinFiltrar}
 			else{recetasSinFiltrar.filter[getTemporada.equals(temporada)].toList}
 	}
