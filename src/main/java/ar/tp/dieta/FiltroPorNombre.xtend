@@ -12,6 +12,6 @@ class FiltroPorNombre implements Filtro {
 	}
 	override aplicarFiltro(List<Receta> recetasSinFiltrar) {
 		if (nombre == ""){return recetasSinFiltrar}
-			else{recetasSinFiltrar.filter[devolverNombre.equals(nombre)].toList}
+			else{recetasSinFiltrar.filter[devolverNombre.contains(nombre)].toList}
 	}
 }

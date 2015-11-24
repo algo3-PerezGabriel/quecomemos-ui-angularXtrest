@@ -10,6 +10,7 @@ import ar.tp.dieta.Receta
 import ar.tp.dieta.RecetarioPublico
 import ar.tp.dieta.RepoRecetas
 import ar.tp.dieta.Usuario
+import ar.tp.dieta.auxiliares.BusquedaRecetaFromView
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -24,20 +25,22 @@ class QueComemosAppModel {
 	String outputTituloGrilla =""
 	Receta recetaSeleccionada
 	List<Receta> recetasEnGrilla = new ArrayList<Receta>
+	List<Receta> recetasAnterioresGrilla= new ArrayList<Receta>
 	RecetarioPublico recetario = new RepoRecetas().getRecetarioPublico	
 
-	String conNombre
-	String conDificultad
-	String conIngrediente
-	String conTemporada
-	int caloriasInferior
-	int caloriasSuperior
-	boolean conFiltrosUsuario
+	String conNombre = ""
+	String conDificultad = ""
+	String conIngrediente =""
+	String conTemporada =""
+	int caloriasInferior = -1
+	int caloriasSuperior = -1
+	boolean conFiltrosUsuario = false
 	
 	
 	new(Usuario elUsr){
 		theUser = elUsr
 		recetasEnGrilla = this.decidirRecetas()
+		recetasAnterioresGrilla = recetasEnGrilla
 	}
 	
 	
@@ -90,9 +93,8 @@ class QueComemosAppModel {
 		outputTituloGrilla = "Resultado de la busqueda"
 		val Busqueda busqueda = new Busqueda()
 		this.crearFiltros(busqueda)
-		
+		recetasAnterioresGrilla = recetasEnGrilla
 		recetasEnGrilla = busqueda.aplicarBusqueda(recetasEnGrilla)
-		//salvar las recetas anteriores, y agregar boton ver recetas anteriores en la vista... ?
 	}
 	
 	def crearFiltros(Busqueda laBusqueda) {
@@ -114,6 +116,24 @@ class QueComemosAppModel {
 			var Receta recetaNueva = recetaSeleccionada.clonateConNombre(nombreNuevo)
 			theUser.agregarReceta(recetaNueva)
 			recetasEnGrilla.add(recetaNueva)
+	}
+	
+	
+	def cargarModelo(BusquedaRecetaFromView busquedaVista){
+		conNombre = busquedaVista.nombreBuscado
+		conDificultad = busquedaVista.dificultadBuscada
+		conIngrediente = busquedaVista.ingredienteBuscado
+		conTemporada = busquedaVista.temporadaBuscada
+//		modeloBienvenida.conFiltrosUsuario = filtroUsuario
+		if(busquedaVista.caloriasDesde.equals("")){caloriasInferior = -1}
+		else{caloriasInferior = Integer.parseInt(busquedaVista.caloriasDesde)}
+		if(busquedaVista.caloriasHasta.equals("")){caloriasSuperior = -1}
+		else{caloriasSuperior =Integer.parseInt(busquedaVista.caloriasHasta)}
+		
+		}
+	
+	def revertirListaRecetas() {
+		recetasEnGrilla = recetasAnterioresGrilla
 	}
 	
 }

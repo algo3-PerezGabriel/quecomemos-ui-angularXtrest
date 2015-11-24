@@ -34,17 +34,19 @@
     </div>
     <div class="form-group">
         <div class="col-sm-3">
-            <select>
-                <option ng-repeat="dificultad in bienvenidaCtrl.listsAux.dificultades">
+            <select ng-model="bienvenidaCtrl.busqueda.dificultadBuscada">
+                <option></option>
+                <option ng-repeat="dificultad in bienvenidaCtrl.combos.dificultades">
                 {{dificultad}}
                 </option>
             </select>
         </div>
         <div class="col-sm-2 col-sm-offset-3">
-            <select>
-                <option ng-repeat="temporada in bienvenidaCtrl.listsAux.temporadas">
+            <select ng-model="bienvenidaCtrl.busqueda.temporadaBuscada">
+                <option></option>
+                <option ng-repeat="temporada in bienvenidaCtrl.combos.temporadas" value="{{temporada}}">
                 {{temporada}}
-                </option>
+                </option>   
             </select>
         </div>
     </div>
@@ -53,7 +55,7 @@
             <label>Contiene ingrediente</label>
         </div>
         <div class="col-sm-6 col-sm-offset-3">
-            <input type="checkbox" ng-model="bienvenidaCtrl.busqueda.filtroUsuario">
+            <input type="checkbox">
             <label>aplicar filtros del perfil de usuario</label>
         </div>
     </div>
@@ -62,15 +64,24 @@
             <input type="text" ng-model="bienvenidaCtrl.busqueda.ingrediente">
         </div>
     </div>
+
     <div class="form-group">
         <div class="col-sm-3">
             <button type="button" class="btn btn-primary" ng-click="bienvenidaCtrl.buscarRecetas()">
             Buscar
             </button>
+            <button class="btn btn-danger" ui-sref="pantallaLogin">Volver</button>
         </div>
     </div>
 
+
+
 <div>
+
+            <button type="button" class="btn btn-primary"
+                    ng-click="bienvenidaCtrl.recetasAnteriores()">
+                Recetas Anteriores
+            </button>
   <div class="panel-heading">
     <h5>{{bienvenidaCtrl.tituloGrilla}}</h5>
   </div>

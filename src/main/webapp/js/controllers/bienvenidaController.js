@@ -4,10 +4,12 @@
 
 	var self = this;
 	self.errorEstado = [];
-	self.busqueda = {};
-	self.listsAux = {
-		"dificultades": ["Facil","Dificil","Mediana"],
-		"temporadas": ["TODO EL AÑO","INVIERNO","OTOÑO","PRIMAVERA","VERANO"]
+/*
+	self.combos = new Combos();
+*/
+	self.combos = {
+		'dificultades':['Facil','Mediana','Dificl'],
+		'temporadas':['INVIERNO','VERANO','OTOÑO','PRIMAVERA']
 	};
 
 	this.lasRecetas = function(){
@@ -20,17 +22,29 @@
 		});
 	};
 
+
+
 	this.favearReceta = function(recetaId){
 		RecetasService.restFavoritear(recetaId, function (){
 			self.lasRecetas();
 		}, function (respuesta){
-			self.errorEstado.push(respuesta.data.estado);
+			self.errorEstado.push(respuesta.data);
 		});
-		self.lasRecetas();
-	};
+	};		
 
-	this.buscarRecetas = function () {
-		RecetasService.restBusqueda(self.busqueda, function(){
+	this.busquedaEjemplo = {
+        "nombreBuscado":"Arroz con Pollo"
+    };	
+
+    this.recetasAnteriores = function (){
+    	RecetasService.restRecetasAnteriores(function(){
+    		self.lasRecetas();
+    	});
+    };
+
+    this.buscarRecetas = function () {
+    	RecetasService.busquedaJson= self.busqueda;
+		RecetasService.restBusqueda(function (response){
 			self.lasRecetas();
 		}, function (respuesta){
 			self.errorEstado.push(respuesta.data.estado);
@@ -39,3 +53,4 @@
 
 	this.lasRecetas();
 });
+

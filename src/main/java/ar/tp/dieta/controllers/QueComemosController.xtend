@@ -66,24 +66,33 @@ class QueComemosController {
 	def Result titulo(){
 		ok(modeloBienvenida.outputTituloGrilla.toJson)
 	}
-	@Get("/busquedaRecetas")
-	def Result busqueda(@Body String body){
+	
+	@Put("/busquedaRecetas/")
+	def Result busquedaConFiltros(@Body String body){
 		
-		try {
-			var BusquedaRecetaFromView  busqueda = gson.fromJson(body, BusquedaRecetaFromView )
-			if (busqueda == null){ return badRequest ('{ "estado" : "no se parsea la busqueda"}')}
-			
-			busqueda.cargarModelo(modeloBienvenida)
+		try {	
+			val BusquedaRecetaFromView  busquedaAux = gson.fromJson(body, BusquedaRecetaFromView)
+			if (busquedaAux == null){ 
+				return badRequest ('{ "estado" : "busqueda no pasa a json"}')
+			}
+			modeloBienvenida.cargarModelo(busquedaAux)
 			modeloBienvenida.ejecutarBusqueda
 			ok('{"estado":"ok"}')
 		}catch (Exception e){ badRequest(e.message)}
 	}
 	
+	@Get("/busquedaAnterior")
+	def Result busquedaAnterior(){
+		modeloBienvenida.revertirListaRecetas()
+		ok('{"estado":"ok"}')
+	}
+
+	
 	@Post("/logearUsuario")
 	def Result logUsuario(@Body String body) {
 	
 		try {
-			var UsrAndPass parametrosJson = gson.fromJson(body, UsrAndPass)
+			val UsrAndPass parametrosJson = gson.fromJson(body, UsrAndPass)
 			
 			modeloLogin.setNombreUsuario = parametrosJson.getNombre
 			modeloLogin.setPasswordUsuario = parametrosJson.getPassword
@@ -100,8 +109,9 @@ class QueComemosController {
 
 
 	def static void main(String[] args) {
-		XTRest.start(QueComemosController, 9006)
+		XTRest.start(QueComemosController, 9028)
 	}
 }
+
 
 

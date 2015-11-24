@@ -1,22 +1,26 @@
 
 <div> 
+
+  <h3>Bienvenido a ¿Que Comemos?</h3>
   <div class="example-animate-container" style="padding-top:10px">
-    <div class="alert alert-danger animate-repeat" ng-repeat="msjeRor in loginCtrl.errors">{{msjeRor}}</div>
+    <div class="alert alert-danger animate-repeat" ng-repeat="msjeRor in loginCtrl.errors">
+      {{msjeRor}}
+    </div>
   </div>
 
 <form class="form-horizontal well well-lg">
-
-
   <div class="form-group">
     <label for="username">Username:</label>
-    <input type="text" id="nameUser" name="nameUser" ng-model="loginCtrl.usr.nombre">
+    <input type="text" ng-model="loginCtrl.usr.nombre">
   </div>
   <div class="form-group">
     <label for="password">Password:</label>
-    <input type="password" id="password" ng-model="loginCtrl.usr.password">
+    <input type="password" ng-model="loginCtrl.usr.password">
   </div>
   <div class="form-group">
-    <button class="btn btn-primary" ng-click="loginCtrl.logear()" >Ingresar</button>
+    <button class="btn btn-primary" ng-click="loginCtrl.logear()">
+      Ingresar
+    </button>
   </div>
 </form>
 </div>

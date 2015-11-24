@@ -1,45 +1,50 @@
+
+
+<div class="example-animate-container" style="padding-top:10px">
+    <div class="alert alert-danger animate-repeat" ng-repeat="msjeRor in bienvenidaCtrl.errorEstado">{{msjeRor}}</div>
+</div>
+
 <form class="form-horizontal well well-lg">
     <div class="form-group">
         <div class="col-sm-3">
-            <span><h4>Busqueda de recetas</h4></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label>Nombre</label>
+            <label><b>Nombre</b></label>
         </div>
         <div class="col-sm-2 col-sm-offset-3">
-        <label>Calorias</label>
+        <label><b>Calorías</b></label>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-3">
-            <input class="text" ng-model="recetaCtrl.criterioBusqueda.nombre">
+            <input class="text" ng-model="bienvenidaCtrl.busqueda.nombreBuscado">
         </div>
         <div class="col-sm-6 col-sm-offset-3">
-            <label>De</label>
-            <input class="text" ng-model="recetaCtrl.criterioBusqueda.caloriasMinimas">
-            <label>A</label>
-            <input class="text" ng-model="recetaCtrl.criterioBusqueda.caloriasMaximas">
+            <label><b>de</b></label>
+            <input class="text" ng-model="bienvenidaCtrl.busqueda.caloriasDesde">
+            <label><b>a</b></label>
+            <input class="text" ng-model="bienvenidaCtrl.busqueda.caloriasHasta">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-3">
-            <label>Dificultad</label>
+            <label><b>Dificultad</b></label>
         </div>
         <div class="col-sm-2 col-sm-offset-3">
-            <label>Temporada</label>
+            <label><b>Temporada</b></label>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-3">
             <select>
-                <option ng-repeat="dificultad in recetaCtrl.criterioBusqueda.dificultadesPosibles">{{dificultad.nombre}}</option>
+                <option ng-repeat="dificultad in bienvenidaCtrl.listsAux.dificultades">
+                {{dificultad}}
+                </option>
             </select>
         </div>
         <div class="col-sm-2 col-sm-offset-3">
             <select>
-                <option ng-repeat="temporada in recetaCtrl.criterioBusqueda.temporadasPosibles">{{temporada.nombre}}</option>
+                <option ng-repeat="temporada in bienvenidaCtrl.listsAux.temporadas">
+                {{temporada}}
+                </option>
             </select>
         </div>
     </div>
@@ -48,18 +53,60 @@
             <label>Contiene ingrediente</label>
         </div>
         <div class="col-sm-6 col-sm-offset-3">
-            <input type="checkbox" ng-model="recetaCtrl.criterioBusqueda.aplicarFiltro">
-            <label>Aplicar Filtro Usuario</label>
+            <input type="checkbox" ng-model="bienvenidaCtrl.busqueda.filtroUsuario">
+            <label>aplicar filtros del perfil de usuario</label>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-3">
-            <input type="text" ng-model="recetaCtrl.criterioBusqueda.ingrediente">
+            <input type="text" ng-model="bienvenidaCtrl.busqueda.ingrediente">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-3">
-            <button type="button" class="btn btn-primary" ng-click="recetaCtrl.buscar()">Buscar</button>
+            <button type="button" class="btn btn-primary" ng-click="bienvenidaCtrl.buscarRecetas()">
+            Buscar
+            </button>
+            <button class="btn btn-danger" ui-sref="pantallaLogin">Volver</button>
         </div>
     </div>
+
+<div>
+  <div class="panel-heading">
+    <h5>{{bienvenidaCtrl.tituloGrilla}}</h5>
+  </div>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Estado</th>
+        <th>Nombre</th>
+        <th>Calorias</th>
+        <th>Dificultad</th>
+        <th>Temporada</th>
+        <th> Acciones </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="receta in bienvenidaCtrl.recetasMostradas">
+        <td>
+          <input type="checkbox" ng-model="receta.esFavorita" name="favorita" disabled="true">
+          favorita
+        </td>
+        <td>
+          <a ui-sref="verDetalle({identifier: receta.sId})">{{receta.nombre}}</a>
+        </td>
+        <td>{{receta.calorias}}</td>
+        <td>{{receta.dificultad}}</td>
+        <td>{{receta.temporada}}</td>
+        <td>
+          <button ng-click="bienvenidaCtrl.favearReceta(receta.sId)" class="btn btn-warning">Favorita</button>
+          <button ui-sref="editar({identificador: receta.sId})"
+                  type="button"
+                  class="btn btn-warning">Copiar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+</div>
+
 </form>
